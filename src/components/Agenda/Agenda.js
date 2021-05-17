@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from "react";
 import buildAgenda from "./build";
+import dayjs from 'dayjs'
 
 const hours = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   22, 23,
 ];
+function getMonth(date) {
+  return date.format('MMMM')
+}
+function setToday(setDate) {
+  setDate(dayjs())
+}
+function previousWeek(date, setDate) {
+  setDate(date.startOf('week').subtract(1, 'week'))
+}
+function nextWeek(date, setDate) {
+  setDate(date.startOf('week').add(1, 'week'))
+
+}
 export default function Calendar({ date, setDate }) {
   const [week, setWeek] = useState([]);
   useEffect(() => {
@@ -13,7 +27,14 @@ export default function Calendar({ date, setDate }) {
   console.log(week);
   return (
     <div className="agenda">
-      <div className="tools">wergrfzfdgfd</div>
+      <div className="tools">
+        <div className="controls">
+          <button onClick={()=>setToday(setDate)}>Hoy</button>
+          <button onClick={()=>previousWeek(date, setDate)}>{'<'}</button>
+          <button onClick={()=>nextWeek(date, setDate)}>{'>'}</button>
+        </div>
+        <div className="month">{getMonth(date)}</div>
+      </div>
       <div className="week">
         <div className="header">
           <div className="space">

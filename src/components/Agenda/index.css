@@ -84,3 +84,13 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.tools {
+
+}
+.tools button {
+  border: none;
+  padding: .5rem;
+  border-radius: .3rem;
+  cursor: pointer;
+}
