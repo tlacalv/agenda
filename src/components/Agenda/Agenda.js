@@ -6,8 +6,26 @@ const hours = [
   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
   22, 23,
 ];
+const scrollbarWidth = () => {
+  // Create the measurement node
+  let scrollDiv = document.createElement("div");
+  scrollDiv.style.width="100px";
+  scrollDiv.style.height="100px";
+  scrollDiv.style.overflow="scroll";
+  scrollDiv.style.position="absolute";
+  scrollDiv.style.top="-9999px";
+  document.body.appendChild(scrollDiv);
+
+  // Get the scrollbar width
+  let scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+  document.body.removeChild(scrollDiv);
+  return scrollbarWidth;
+}
 function getMonth(date) {
   return date.format('MMMM')
+}
+function getYear(date) {
+  return date.format('YYYY')
 }
 function setToday(setDate) {
   setDate(dayjs())
@@ -18,6 +36,9 @@ function previousWeek(date, setDate) {
 function nextWeek(date, setDate) {
   setDate(date.startOf('week').add(1, 'week'))
 
+}
+function dayStyles(date) {
+  return date.startOf('day').isSame(dayjs().startOf('day')) ? 'highlight' : '' 
 }
 export default function Calendar({ date, setDate }) {
   const [week, setWeek] = useState([]);
@@ -33,7 +54,7 @@ export default function Calendar({ date, setDate }) {
           <button onClick={()=>previousWeek(date, setDate)}>{'<'}</button>
           <button onClick={()=>nextWeek(date, setDate)}>{'>'}</button>
         </div>
-        <div className="month">{getMonth(date)}</div>
+        <div className="month">{getMonth(date)} {getYear(date)}</div>
       </div>
       <div className="week">
         <div className="header">
@@ -41,7 +62,7 @@ export default function Calendar({ date, setDate }) {
           </div>
           {week.length > 0
             ? week.map((day) => (
-                <div className="day-info">
+                <div className={ `day-info ${dayStyles(day)} `}>
                   <div className="day-name">
                     {day.format("ddd").toUpperCase()}
                   </div>
@@ -49,6 +70,7 @@ export default function Calendar({ date, setDate }) {
                 </div>
               ))
             : null}
+            <div className="scroll-space" style={{ minWidth: `${scrollbarWidth()}px`}}></div>
         </div>
         <div className="body">
           <div className="dates">
