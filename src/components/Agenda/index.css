@@ -83,8 +83,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.3rem;
-  padding: .3rem;
+  font-size: 1.5rem;
+  padding: .5rem;
   color: var(--gray-600);
 }
 .highlight div {
@@ -137,8 +137,11 @@
   color: var(--gray-700);
 }
 .tools button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
-  padding: .5rem .7rem;
+  padding: .3rem .5rem;
   color: var(--gray-600);
   border-radius: .3rem;
   cursor: pointer;
