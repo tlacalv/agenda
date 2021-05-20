@@ -1,0 +1,38 @@
+.tools{
+  height: 5%;
+  min-height: 50px;
+  width: 100%;
+  background-color: var(--gray-100);
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
+}
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+.month {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--gray-700);
+}
+.tools button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: .3rem .5rem;
+  color: var(--gray-600);
+  border-radius: .3rem;
+  cursor: pointer;
+  border: 1px solid var(--gray-200);
+  transition: .3s;
+}
+.tools button:hover,
+.tools button:focus {
+  background-color: var(--gray-150);
+  outline: none;
+}

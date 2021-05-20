@@ -1,9 +1,10 @@
 import Week from "./components/Week";
 import ToolBar from "./components/ToolBar";
+import styles from "./sass/agenda.module.scss";
 
 export default function Calendar({ date, setDate }) {
   return (
-    <div className="agenda">
+    <div className={styles.agenda}>
       <ToolBar date={date} setDate={setDate} />
       <Week date={date} setDate={setDate} />
     </div>

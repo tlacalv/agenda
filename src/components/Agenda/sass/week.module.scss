@@ -1,0 +1,33 @@
+.week {
+  display: flex;
+  width: 100%;
+  height: 94%;
+  background-color: var(--gray-100);
+  flex-direction: column;
+}
+.body {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+.dates {
+  display: flex;
+  height: 100%;
+}
+.dayHours {
+  min-width: 70px;
+}
+
+.day {
+  width: 100%;
+ }
+ .hour {
+
+  border: 1px solid var(--gray-200);
+  border-right: none;
+  border-top: none;
+  height: 40px;
+  color: var(--gray-400);
+  display: flex;
+  justify-content: flex-end;
+}
