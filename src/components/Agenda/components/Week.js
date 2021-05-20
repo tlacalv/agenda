@@ -28,7 +28,7 @@ export default function Week({date, setDate}) {
           <Modal.Title>Añadir evento</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Shit goes here</p>
+          <p>Content goes here</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
