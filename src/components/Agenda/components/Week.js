@@ -10,6 +10,10 @@ import styles from '../sass/week.module.scss';
 export default function Week({date, setDate}) {
   const [show, setShow] = useState(false)
   const [week, setWeek] = useState([]);
+  const [event, setEvent] = useState({
+    start: null,
+    end: null,
+  })
   
   useEffect(() => {
     setWeek(buildAgenda(date));
@@ -17,13 +21,25 @@ export default function Week({date, setDate}) {
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
+  const changeTime = (value) =>{
+    console.log(event)
+    setEvent(event=> ({
+      ...event,
+      start: value[0],
+      end: value[1]
+    }))
+  }
   const addEvent = (startHour) => {
     handleShow();
-    console.log(startHour.format("HH:mm:ss a"))
+    setEvent(event=>({
+      ...event,
+      start: startHour.format('HH:mm'),
+      end: startHour.add(1, 'hour').format('HH:mm')
+    }))
   }
   return (
     <div className={styles.week}>
-      <AddEvent show={show} handleClose={handleClose} />
+      <AddEvent changeTime={changeTime} event={event} show={show} handleClose={handleClose} />
       <WeekHeader week={week} />
       <div className={styles.body}>
         <div className={styles.dates}>
