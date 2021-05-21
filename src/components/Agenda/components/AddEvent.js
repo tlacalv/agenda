@@ -10,7 +10,7 @@ export default function AddEvent({show, handleClose, event, changeTime}) {
           <Modal.Title>Añadir evento</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <TimeRangePicker onChange={(e)=>changeTime(e)} value={[event.start, event.end]} />
+          <TimeRangePicker disableClock onChange={(e)=>changeTime(e)} value={[event.start, event.end]} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
