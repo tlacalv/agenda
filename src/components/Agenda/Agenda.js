@@ -5,7 +5,7 @@ import styles from "./sass/agenda.module.scss";
 
 export default function Calendar({ date, setDate }) {
   const [events, setEvents] = useState([])
-
+  console.log(events)
   return (
     <div className={styles.agenda}>
       <ToolBar date={date} setDate={setDate} />

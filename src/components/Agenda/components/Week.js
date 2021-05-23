@@ -1,6 +1,4 @@
 import React, {useState, useEffect} from "react";
-import dayjs from 'dayjs'
-
 import {hours} from '../utils'
 import buildAgenda from "../build";
 import AddEvent from './AddEvent';
@@ -23,31 +21,34 @@ export default function Week({date, events, setEvents}) {
 
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
-  const changeTime = (value) =>{
+  const changeTime = (value, event) =>{
+    const [firstHour, secondHour] = value;
+    const first = firstHour.split(':')
+    const second = secondHour.split(':')
+    const date = event.start;
     setEvent(event=> ({
       ...event,
-      start: value[0],
-      end: value[1]
+      start: date.hour(first[0]).minute(first[1]),
+      end: date.hour(second[0]).minute(second[1])
     }))
   }
   const addEvent = (startHour) => {
     handleShow();
     setEvent(event=>({
       ...event,
-      start: startHour.format('HH:mm'),
-      end: startHour.add(1, 'hour').format('HH:mm')
+      start: startHour,
+      end: startHour.add(1, 'hour')
     }))
   }
   const saveEvent = () => {
-    let {start, end} = event;
-    start = start.split(':')
-    end = end.split(':')
+    const {start, end} = event;
     const newEvent = {
-      start: dayjs().startOf('day').hour(start[0]).minute(start[1]),
-      end: dayjs().startOf('day').hour(end[0]).minute(end[1]),
+      start,
+      end,
       title
     }
     setEvents((events) => [...events, newEvent])
+    setShow(false)
   }
   return (
     <div className={styles.week}>
@@ -67,7 +68,14 @@ export default function Week({date, events, setEvents}) {
                   <Hour addEvent={addEvent} hour={day.hour(hour)} />
                 ))}
               </div>
-              <div className={styles.overlayDay}><div>ad</div></div>
+              <div className={styles.overlayDay}>
+                {events.map(item => {
+                  const {start} = item;
+                  console.log(start.get('date'))
+                  if(start.startOf('day').isSame(day)) return item.title
+                  return null
+                })}
+              </div>
             </div>
           ))}
         </div>
