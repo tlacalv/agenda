@@ -4,6 +4,7 @@ import buildAgenda from "../build";
 import AddEvent from './AddEvent';
 import WeekHeader from './WeekHeader'
 import Hour from './Hour';
+import Event from './Event';
 import styles from '../sass/week.module.scss';
 
 export default function Week({date, events, setEvents}) {
@@ -69,10 +70,9 @@ export default function Week({date, events, setEvents}) {
                 ))}
               </div>
               <div className={styles.overlayDay}>
-                {events.map(item => {
-                  const {start} = item;
-                  console.log(start.get('date'))
-                  if(start.startOf('day').isSame(day)) return item.title
+                {events.map(event => {
+                  const {start} = event;
+                  if(start.startOf('day').isSame(day)) return <Event event={event} />
                   return null
                 })}
               </div>

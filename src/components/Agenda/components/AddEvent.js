@@ -4,7 +4,6 @@ import TimeRangePicker from '@wojtekmaj/react-timerange-picker';
 import Button from 'react-bootstrap/Button';
 
 export default function AddEvent({show, handleClose, event, changeTime, handleSave, setTitle}) {
-  console.log(event)
   const title = useRef()
 
   if(!show) return null
