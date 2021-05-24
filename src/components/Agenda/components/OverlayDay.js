@@ -6,7 +6,7 @@ const OverlayDay = ({ events, day }) => {
   return (
     <div className={styles.overlayDay}>
       {events.map((event) => {
-        const { start, end } = event;
+        const { start } = event;
 
         if (start.startOf("day").isSame(day)) return <Event event={event} />;
         return null;
