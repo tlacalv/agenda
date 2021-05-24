@@ -1,12 +1,10 @@
-.dayHour{
+.dayHour {
   border: 1px solid var(--gray-200);
   border-right: none;
   border-top: none;
   height: 40px;
-  cursor: pointer;
   color: var(--gray-400);
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-

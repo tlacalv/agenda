@@ -22,16 +22,15 @@
 .day {
   width: 100%;
   position: relative;
- }
- .hour {
-
+}
+.hour {
   border: 1px solid var(--gray-200);
   border-right: none;
   border-top: none;
   height: var(--hour-height);
   color: var(--gray-400);
   display: flex;
-  
+
   justify-content: flex-end;
 }
 .hours {
@@ -44,6 +43,7 @@
 }
 .overlayDay {
   position: relative;
+  overflow: hidden;
   width: calc(100% - 1rem);
   height: 100%;
   height: calc(var(--hour-height) * 24);
