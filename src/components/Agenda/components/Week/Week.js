@@ -17,14 +17,13 @@ export default function Week({ date, events, setEvents }) {
     start: null,
     end: null,
   });
-
   useEffect(() => {
     setWeek(buildAgenda(date));
   }, [date]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const changeTime = (value, event) => {
+  const changeTime = (value) => {
     setEvent((event) => ({
       ...event,
       ...getStartEnd(value, event),
@@ -34,8 +33,8 @@ export default function Week({ date, events, setEvents }) {
     handleShow();
     setEvent((event) => ({
       ...event,
-      start: startHour,
-      end: startHour.add(1, "hour"),
+      start: startHour.valueOf(),
+      end: startHour.add(1, "hour").valueOf(),
     }));
   };
   const saveEvent = () => {
@@ -47,7 +46,7 @@ export default function Week({ date, events, setEvents }) {
       overlapping: 1,
       offset: 1,
     };
-    setEvents(calcOverlapOffset(newEvent));
+    setEvents((event) => [...event, newEvent]);
     setShow(false);
   };
   return (

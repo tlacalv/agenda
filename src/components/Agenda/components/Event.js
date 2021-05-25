@@ -17,13 +17,13 @@ const eventStyle = (start, end, overlapping, offset) => {
 };
 
 export default function Event({ event }) {
-  const { overlapping, offset } = event;
+  let { overlapping, offset, start, end } = event;
   return (
     <div
       className={styles.event}
-      style={eventStyle(event.start, event.end, overlapping, offset)}
+      style={eventStyle(start, end, overlapping, offset)}
     >
-      {event.title} {event.start.format("HH:mm")} - {event.end.format("HH:mm")}
+      {event.title} {start.format("HH:mm")} - {end.format("HH:mm")}
     </div>
   );
 }

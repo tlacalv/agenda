@@ -1,11 +1,13 @@
+import dayjs from "dayjs";
+
 export const getStartEnd = (value, event) => {
   const [firstHour, secondHour] = value;
   const first = firstHour.split(":");
   const second = secondHour.split(":");
-  const date = event.start;
+  const date = dayjs(event.start);
   return {
-    start: date.hour(first[0]).minute(first[1]),
-    end: date.hour(second[0]).minute(second[1]),
+    start: date.hour(first[0]).minute(first[1]).valueOf(),
+    end: date.hour(second[0]).minute(second[1]).valueOf(),
   };
 };
 //returns a function that iterates events in state and sets overlappings and offsets
