@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../sass/week.module.scss";
+import styles from "../../sass/week.module.scss";
 import Event from "./Event";
 import dayjs from "dayjs";
 

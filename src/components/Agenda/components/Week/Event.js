@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../sass/event.module.scss";
+import styles from "../../sass/event.module.scss";
 
 const eventStyle = (start, end, overlapping, offset) => {
   const startMinutes = start.get("hour") * 60 + start.get("minute");

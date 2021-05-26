@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { hours } from "../../utils";
-import buildAgenda from "../../build";
+import { hours, getStartEnd } from "../../utils";
+import buildAgenda from "./build";
 import AddEvent from "../AddEvent";
-import WeekHeader from "../WeekHeader";
-import Hour from "../Hour";
-import OverlayDay from "../OverlayDay";
+import WeekHeader from "./WeekHeader";
+import Hour from "./Hour";
+import OverlayDay from "./OverlayDay";
 import styles from "../../sass/week.module.scss";
-
-import { getStartEnd, calcOverlapOffset } from "./utils";
 
 export default function Week({ date, events, setEvents }) {
   const [show, setShow] = useState(false);
